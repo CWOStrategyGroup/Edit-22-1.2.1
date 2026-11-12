@@ -1,0 +1,73 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <title>Edit-22</title>
+  <link rel="stylesheet" href="panel.css" />
+</head>
+<body>
+  <main>
+    <header>
+      <div class="brand"><span class="logo">E22</span> Edit-22</div>
+      <span id="pill" class="pill">Ready</span>
+    </header>
+
+    <section>
+      <div class="step"><b>1</b> Paste the edited version <button id="clear" class="link">Clear</button></div>
+      <div id="edited" class="paste" contenteditable="true" spellcheck="false"
+           data-placeholder="Paste the edited essay (or just the paragraph you changed) here. Bold, italics and underline are kept."></div>
+    </section>
+
+    <section>
+      <div class="step"><b>2</b> Highlight the part to edit in your doc, then grab it</div>
+      <div class="row">
+        <button id="grabSel" class="primary">Grab highlighted text</button>
+        <button id="grabAll" title="Use the whole doc. If you pasted only one paragraph, Edit-22 finds where it goes.">Whole doc</button>
+      </div>
+      <div id="grabInfo" class="hint hidden"></div>
+    </section>
+
+    <section id="previewBox" class="hidden">
+      <div class="step"><b>3</b> Check the changes, then apply</div>
+      <div id="summary" class="summary"></div>
+      <div id="notes"></div>
+      <div id="diff" class="diff"></div>
+      <div class="row">
+        <button id="apply" class="primary" disabled>Apply edits</button>
+        <button id="stop" class="danger hidden">Stop</button>
+      </div>
+      <div id="progressWrap" class="progress hidden"><div id="progressBar"></div></div>
+    </section>
+
+    <div id="msg" class="msg hidden"></div>
+
+    <section class="settings">
+      <div class="slider">
+        <div class="slabel"><span>Typing speed</span><b id="wpmVal">60 WPM</b></div>
+        <input type="range" id="wpm" min="10" max="200" step="5" />
+      </div>
+      <div class="slider">
+        <div class="slabel"><span>Pause before each edit</span><b id="pauseVal">0.5 s</b></div>
+        <input type="range" id="pause" min="0" max="20" step="0.25" />
+      </div>
+      <label class="check"><input type="checkbox" id="autoLocate" /> If I paste only part of the essay, figure out where it goes</label>
+      <label class="check"><input type="checkbox" id="matchFormat" /> Copy bold / italic / underline from what I pasted</label>
+    </section>
+
+    <footer>
+      Tip: put Docs in <b>Suggesting</b> mode (pencil icon, top right) to review each change. Ctrl/⌘+Z undoes edits. Don't type in the doc while Edit-22 is working.
+    </footer>
+  </main>
+
+  <div id="etaBar" class="eta">
+    <span id="etaText">Time to done: –</span>
+    <span id="etaSub"></span>
+  </div>
+
+  <script src="engine.js"></script>
+  <script src="rich.js"></script>
+  <script src="clip.js"></script>
+  <script src="driver.js"></script>
+  <script src="panel.js"></script>
+</body>
+</html>
